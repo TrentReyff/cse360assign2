@@ -1,7 +1,5 @@
 package assign1;
 
-import java.util.Arrays;
-
 /**
  * @author Trent Reyff
  * <br><br>ClassID: 428
@@ -29,18 +27,27 @@ public class SimpleList
 	
 	/**
 	 * Add a number to the beginning of list moving all other integers over.
-	 * If list is full the last element is removed.
-	 * 
+	 * If list is full the list size is increased by 50%
+	 *
 	 * @param num - the number to be added
 	 */
 	public void add(int num)
 	{
-		int loopIndex;
+		int loopIndex = 0;
 		
-		if(count  != 10)
+		if(count  == list.length)
 		{
-			count++;
+			int[] tempList = new int[list.length * 3 / 2];
+			while(loopIndex < list.length)
+			{
+				tempList[loopIndex] = list[loopIndex];
+				loopIndex++;
+			}
+			
+			list = tempList;
 		}
+		
+		count++;
 		
 		loopIndex = count - 1;
 		
@@ -55,7 +62,7 @@ public class SimpleList
 	
 	/**
 	 * Remove an element from the list if found
-	 * 
+	 * Also checks if list is less than 3/4 full and reduces the list size if true
 	 * @param num - the number to be removed
 	 */
 	public void remove(int num)
@@ -73,6 +80,18 @@ public class SimpleList
 			}
 			list[count - 1] = 0;
 			count--;
+		}
+		
+		if(count < list.length * 3 / 4)
+		{
+			int[] tempList = new int[count];
+			loopIndex = 0;
+			while(loopIndex < count)
+			{
+				tempList[loopIndex] = list[loopIndex];
+				loopIndex++;
+			}
+			list = tempList;
 		}
 	}
 	
