@@ -144,4 +144,47 @@ public class SimpleList
 		return numIndex;
 	}
 	
+	/**
+	 * appends num to the end of the list
+	 * If list is full the list size is increased by 50%
+	 * @param num number to be added to the list
+	 */
+	public void append(int num)
+	{
+		int loopIndex = 0;
+		
+		if(count  == list.length)
+		{
+			int[] tempList = new int[list.length * 3 / 2];
+			while(loopIndex < list.length)
+			{
+				tempList[loopIndex] = list[loopIndex];
+				loopIndex++;
+			}
+			
+			list = tempList;
+		}
+		
+		list[count] = num;
+		count++;
+	}
+	
+	/**
+	 * return first element of list
+	 * @return list at 0 which is the first element in the list
+	 */
+	public int first()
+	{
+		return list[0];
+	}
+	
+	/**
+	 * returns the total size of list
+	 * @return length of the list, includes empty indexes
+	 */
+	public int size()
+	{
+		return list.length;
+	}
+	
 }
