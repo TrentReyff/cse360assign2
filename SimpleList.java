@@ -11,7 +11,6 @@ package assign1;
 
 public class SimpleList
 {
-	
 	private int[] list;
 	private int count;
 	
@@ -43,7 +42,6 @@ public class SimpleList
 				tempList[loopIndex] = list[loopIndex];
 				loopIndex++;
 			}
-			
 			list = tempList;
 		}
 		
@@ -81,7 +79,6 @@ public class SimpleList
 			list[count - 1] = 0;
 			count--;
 		}
-		
 		if(count < list.length * 3 / 4)
 		{
 			int[] tempList = new int[count];
